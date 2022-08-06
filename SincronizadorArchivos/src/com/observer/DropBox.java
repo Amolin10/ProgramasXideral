@@ -1,13 +1,13 @@
 package com.observer;
 
 /**
- * MicrosoftOneDrive
+ * Dropbox
  * Es un Observador
  * Es un CloudStorage
  * @author molin
  *
  */
-public class MicrosoftOneDrive extends Observer implements CloudStorage {
+public class DropBox extends Observer implements CloudStorage {
 
 	/**
 	 * Variable para almacenar las líneas de texto que añade el usuario
@@ -18,10 +18,10 @@ public class MicrosoftOneDrive extends Observer implements CloudStorage {
 	 * Constructor heredado de Observer
 	 * @param subject es el elemento que escuchará a la espera de una notificación
 	 */
-	public MicrosoftOneDrive(Subject subject) {
+	public DropBox(Subject subject) {
 		super(subject);
 	}
-
+	
 	/**
 	 * LLamar al método local almacenarCopia
 	 * @param texto el la línea de texto que añadió el usuario
@@ -39,7 +39,7 @@ public class MicrosoftOneDrive extends Observer implements CloudStorage {
 	@Override
 	public void almacenarCopia(String texto) {
 		sb.append(texto + " ");
-		System.out.println("---> Contenido Microsoft OneDrive: " + sb);
+		System.out.println("---> Contenido DropBox: " + sb + " ");
 	}
-	
+
 }

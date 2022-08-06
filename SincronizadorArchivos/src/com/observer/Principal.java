@@ -8,6 +8,7 @@ public class Principal {
 		File file = new File();
 		new GoogleDrive(file);
 		new MicrosoftOneDrive(file);
+		new DropBox(file);
 
 		Scanner entradaTeclado = new Scanner(System.in);
 
