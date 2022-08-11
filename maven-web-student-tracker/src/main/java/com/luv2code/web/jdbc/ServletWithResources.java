@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class TestServlet
  */
-@WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet {
+@WebServlet("/TestWithResources")
+public class ServletWithResources extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// Define datasource/connection pool for Resource Injection
@@ -36,24 +36,17 @@ public class TestServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		
 		// Step 2:  Get a connection to the database
-		Connection myConn = null;
-		Statement myStmt = null;
-		ResultSet myRs = null;
-		
-		try {
-			myConn = dataSource.getConnection();
 			
-			// Step 3:  Create a SQL statements
-			String sql = "select * from student";
-			myStmt = myConn.createStatement();
+		//Try with resources -> cierra recursos automáticamente al terminar el bloque
+		try (	Connection myConn = dataSource.getConnection();
+				Statement myStmt = myConn.createStatement();
+				ResultSet myRs = myStmt.executeQuery("select * from deportista");){
 			
-			// Step 4:  Execute SQL query
-			myRs = myStmt.executeQuery(sql);
-			
-			// Step 5:  Process the result set
 			while (myRs.next()) {
-				String email = myRs.getString("first_name");
-				out.println(email);
+				String nombreDeportista = myRs.getString(2);  //Columnas-> 1:id, 2:nombre, 3:apellido, 4:deporte 
+				String apellidoDeportista = myRs.getString("apellido");
+				String deporte = myRs.getString("deporte");
+				out.println(nombreDeportista + " " + apellidoDeportista + ": " + deporte);
 			}
 		}
 		catch (Exception exc) {
@@ -62,10 +55,3 @@ public class TestServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-

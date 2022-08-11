@@ -17,8 +17,8 @@ import javax.sql.DataSource;
 /**
  * Servlet implementation class TestServlet
  */
-@WebServlet("/TestServlet")
-public class TestServlet extends HttpServlet {
+@WebServlet("/TestServletDeportista")
+public class TestServletDeportista extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	// Define datasource/connection pool for Resource Injection
@@ -44,7 +44,7 @@ public class TestServlet extends HttpServlet {
 			myConn = dataSource.getConnection();
 			
 			// Step 3:  Create a SQL statements
-			String sql = "select * from student";
+			String sql = "select * from deportista";
 			myStmt = myConn.createStatement();
 			
 			// Step 4:  Execute SQL query
@@ -52,8 +52,9 @@ public class TestServlet extends HttpServlet {
 			
 			// Step 5:  Process the result set
 			while (myRs.next()) {
-				String email = myRs.getString("first_name");
-				out.println(email);
+				String nombreDeportista = myRs.getString(2);  //Columnas-> 1:id, 2:nombre, 3:apellido, 4:deporte 
+				String apellidoDeportista = myRs.getString("apellido");
+				out.println(nombreDeportista + " " + apellidoDeportista);
 			}
 		}
 		catch (Exception exc) {
@@ -62,10 +63,3 @@ public class TestServlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
