@@ -1,6 +1,9 @@
 package com.luv2code.web.jdbc;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -60,15 +63,15 @@ public class DeportistaControllerServlet extends HttpServlet {
 				break;
 				
 			case "LOAD":
-				
+				loadDeportista(request, response);
 				break;
 				
 			case "UPDATE":
-				
+				updateDeportista(request, response);
 				break;
 			
 			case "DELETE":
-				
+				deleteDeportista(request, response);
 				break;
 				
 			default:
@@ -82,6 +85,58 @@ public class DeportistaControllerServlet extends HttpServlet {
 		
 	}
 
+	private void deleteDeportista(HttpServletRequest request, HttpServletResponse response)
+		throws Exception {
+
+		// read student id from form data
+		String theDeportistaId = request.getParameter("deportistaId");
+		
+		// delete student from database
+		deportistaDbtil.deleteDeportista(theDeportistaId);
+		
+		// send them back to "list students" page
+		listaDeportistas(request, response);
+	}
+	
+	private void loadDeportista(HttpServletRequest request, HttpServletResponse response) 
+		throws Exception {
+
+		String thDeportistaId = request.getParameter("deportistaId");
+		
+		// get student from database (db util)
+		Deportista theDeportista = deportistaDbtil.getDeportista(thDeportistaId);
+		//System.out.println(theDeportista);
+		
+		// place student in the request attribute
+		request.setAttribute("EL_DEPORTISTA", theDeportista);
+		
+		// send to jsp page: update-student-form.jsp
+		RequestDispatcher dispatcher = 
+				request.getRequestDispatcher("/update-deportista-form.jsp");
+		dispatcher.forward(request, response);			
+	}
+	
+	private void updateDeportista(HttpServletRequest request, HttpServletResponse response)
+		throws Exception {
+
+		// read student info from form data
+		int id = Integer.parseInt(request.getParameter("deportistaId"));
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String deporte = request.getParameter("deporte");
+		
+		// create a new student object
+		Deportista theDeportista = new Deportista(id, nombre, apellido, deporte);
+		
+		//System.out.println(theDeportista);
+		// perform update on database
+		deportistaDbtil.updateDeportista(theDeportista);
+		
+		// send them back to the "list students" page
+		listaDeportistas(request, response);
+		
+	}
+	
 	private void addDeportista(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// read deportista info from form data
@@ -107,6 +162,7 @@ public class DeportistaControllerServlet extends HttpServlet {
 			for(Deportista dp: deportistas) {
 				System.out.println(dp);
 			}
+			System.out.println("************************************************");
 			
 			// add students to the request
 			request.setAttribute("LISTA_DEPORTISTAS", deportistas);

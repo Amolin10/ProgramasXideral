@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Agregar Deportista</title>
+	<title>Actualizar Deportista</title>
 
 	<link type="text/css" rel="stylesheet" href="css/style.css">
 	<link type="text/css" rel="stylesheet" href="css/add-deportista-style.css">	
@@ -16,27 +16,32 @@
 	</div>
 	
 	<div id="container">
-		<h3>Agregar Deportista</h3>
+		<h3>Actualizar Deportista</h3>
 		
 		<form action="DeportistaControllerServlet" method="GET">
 		
-			<input type="hidden" name="command" value="ADD" />
+			<input type="hidden" name="command" value="UPDATE" />
+
+			<input type="hidden" name="deportistaId" value="${EL_DEPORTISTA.id}" />
 			
 			<table>
 				<tbody>
 					<tr>
 						<td><label>Nombre:</label></td>
-						<td><input type="text" name="nombre" /></td>
+						<td><input type="text" name="nombre" 
+								   value="${EL_DEPORTISTA.nombre}" /></td>
 					</tr>
 
 					<tr>
 						<td><label>Apellido:</label></td>
-						<td><input type="text" name="apellido" /></td>
+						<td><input type="text" name="apellido" 
+								   value="${EL_DEPORTISTA.apellido}" /></td>
 					</tr>
 
 					<tr>
-						<td><label>Deporte</label></td>
-						<td><input type="text" name="deporte" /></td>
+						<td><label>Deporte:</label></td>
+						<td><input type="text" name="deporte" 
+								   value="${EL_DEPORTISTA.deporte}" /></td>
 					</tr>
 					
 					<tr>

@@ -59,7 +59,7 @@
 							<a href="${tempLink}">Update</a> 
 							 | 
 							<a href="${deleteLink}"
-							onclick="if (!(confirm('Are you sure you want to delete this deportista?'))) return false">
+							onclick="if (!(confirm('Estás seguro de que quieres eliminar este deportista?'))) return false">
 							Delete</a>	
 						</td>
 					</tr>
