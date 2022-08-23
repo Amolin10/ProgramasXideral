@@ -20,7 +20,7 @@
 	<div id="container">
 		<h3>Save Customer</h3>
 	
-		<form:form action="saveCustomer" modelAttribute="customer" method="POST">
+		<form:form action="saveDeportista" modelAttribute="deportista" method="POST">
 
 			<!-- need to associate this data with customer id -->
 			<form:hidden path="id" />
@@ -57,7 +57,7 @@
 		<div style="clear; both;"></div>
 		
 		<p>
-			<a class="btn btn-dark" href="${pageContext.request.contextPath}/customer/list">Back to List</a>
+			<a class="btn btn-dark" href="${pageContext.request.contextPath}/deportista/list">Back to List</a>
 		</p>
 	
 	</div>
@@ -65,13 +65,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-

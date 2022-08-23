@@ -6,6 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * Agregar constructores, getters, setters y método toString
+ * Utilizando lombok
+ * @author Amolin
+ */
+
 @NoArgsConstructor @AllArgsConstructor
 @Getter @Setter
 @ToString
