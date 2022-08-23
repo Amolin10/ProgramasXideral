@@ -4,15 +4,9 @@
 <html>
 
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<title>Save Customer</title>
-
-	<link type="text/css"
-		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/css/style.css">
-
-	<link type="text/css"
-		  rel="stylesheet"
-		  href="${pageContext.request.contextPath}/css/add-customer-style.css">
 </head>
 
 <body>
@@ -31,7 +25,7 @@
 			<!-- need to associate this data with customer id -->
 			<form:hidden path="id" />
 					
-			<table>
+			<table class="table table-striped">
 				<tbody>
 					<tr>
 						<td><label>First name:</label></td>
@@ -50,7 +44,7 @@
 
 					<tr>
 						<td><label></label></td>
-						<td><input type="submit" value="Save" class="save" /></td>
+						<td><input type="submit" value="Save" class="btn btn-primary" /></td>
 					</tr>
 
 				
@@ -63,7 +57,7 @@
 		<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/customer/list">Back to List</a>
+			<a class="btn btn-dark" href="${pageContext.request.contextPath}/customer/list">Back to List</a>
 		</p>
 	
 	</div>

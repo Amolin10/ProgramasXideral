@@ -6,7 +6,7 @@
 
 <head>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	<title>List Customers</title>
 </head>
 
@@ -14,7 +14,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>CRM - Customer Relationship Manager</h2>
+			<h2 class="h2">CRM - Customer Relationship Manager</h2>
 		</div>
 	</div>
 	
@@ -26,7 +26,7 @@
 		
 			<input type="button" value="Add Customer"
 				   onclick="window.location.href='showFormForAdd'; return false;"
-				   class="add-button"
+				   class="btn btn-dark btn-lg"
 			/>
 		
 			<!--  add our html table here -->
@@ -64,9 +64,9 @@
 							
 							<td>
 								<!-- display the update link -->
-								<a href="${updateLink}">Update</a>
+								<a class="btn btn-primary btn-sm" href="${updateLink}">Update</a>
 								|
-								<a href="${deleteLink}"
+								<a class="btn btn-primary btn-sm" href="${deleteLink}"
 								onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
 							</td>
 							
