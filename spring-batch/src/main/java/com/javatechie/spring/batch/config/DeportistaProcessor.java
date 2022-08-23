@@ -6,9 +6,9 @@ import org.springframework.batch.item.ItemProcessor;
 public class DeportistaProcessor implements ItemProcessor<Deportista,Deportista> {
 
     @Override
-    public Deportista process(Deportista customer) throws Exception {
+    public Deportista process(Deportista deportista) throws Exception {
         //if(customer.getCountry().equals("United States")) {
-            return customer;
+            return deportista;
         //}else{
             //return null;
         //}

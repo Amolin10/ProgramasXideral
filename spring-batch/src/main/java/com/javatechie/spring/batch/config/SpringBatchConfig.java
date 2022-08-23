@@ -1,7 +1,7 @@
 package com.javatechie.spring.batch.config;
 
 import com.javatechie.spring.batch.entity.Deportista;
-import com.javatechie.spring.batch.repository.CustomerRepository;
+import com.javatechie.spring.batch.repository.DeportistaRepository;
 //import lombok.AllArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -27,13 +27,13 @@ public class SpringBatchConfig {
 
     private JobBuilderFactory jobBuilderFactory;
     private StepBuilderFactory stepBuilderFactory;
-    private CustomerRepository customerRepository;
+    private DeportistaRepository deportistaRepository;
     
     public SpringBatchConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory,
-			CustomerRepository customerRepository) {
+    		DeportistaRepository deportistaRepository) {
 		this.jobBuilderFactory = jobBuilderFactory;
 		this.stepBuilderFactory = stepBuilderFactory;
-		this.customerRepository = customerRepository;
+		this.deportistaRepository = deportistaRepository;
 	}
 
 	@Bean
@@ -71,7 +71,7 @@ public class SpringBatchConfig {
     @Bean
     public RepositoryItemWriter<Deportista> writer() {
         RepositoryItemWriter<Deportista> writer = new RepositoryItemWriter<>();
-        writer.setRepository(customerRepository);
+        writer.setRepository(deportistaRepository);
         writer.setMethodName("save");
         return writer;
     }
@@ -88,7 +88,7 @@ public class SpringBatchConfig {
 
     @Bean
     public Job runJob() {
-        return jobBuilderFactory.get("importCustomers")
+        return jobBuilderFactory.get("importDeportistas")
                 .flow(step1()).end().build();
 
     }

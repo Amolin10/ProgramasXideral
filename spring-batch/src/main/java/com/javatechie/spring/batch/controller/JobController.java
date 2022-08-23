@@ -22,7 +22,7 @@ public class JobController {
     @Autowired
     private Job job;
 
-    @PostMapping("/importCustomers")
+    @PostMapping("/importDeportistas")
     public void importCsvToDBJob() {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("startAt", System.currentTimeMillis()).toJobParameters();
